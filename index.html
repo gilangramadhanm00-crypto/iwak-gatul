@@ -1,0 +1,435 @@
+```html
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Iwak Gatul - Jajanan Lezat</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: Arial, sans-serif;
+        }
+
+        body {
+            background: #fff8ed;
+            color: #3d2415;
+        }
+
+        header {
+            background: linear-gradient(135deg, #8b4513, #d2691e);
+            color: white;
+            text-align: center;
+            padding: 35px 15px;
+        }
+
+        header h1 {
+            font-size: 38px;
+            margin-bottom: 10px;
+        }
+
+        header p {
+            font-size: 17px;
+        }
+
+        .container {
+            max-width: 1100px;
+            margin: auto;
+            padding: 30px 15px;
+        }
+
+        .judul {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .judul h2 {
+            font-size: 30px;
+            color: #8b4513;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 22px;
+        }
+
+        .menu {
+            background: white;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+            transition: 0.3s;
+        }
+
+        .menu:hover {
+            transform: translateY(-5px);
+        }
+
+        .menu img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+        }
+
+        .menu-content {
+            padding: 18px;
+        }
+
+        .menu h3 {
+            font-size: 21px;
+            margin-bottom: 8px;
+            color: #7a3e12;
+        }
+
+        .deskripsi {
+            color: #777;
+            font-size: 14px;
+            min-height: 40px;
+        }
+
+        .harga {
+            font-size: 19px;
+            font-weight: bold;
+            margin: 12px 0;
+            color: #d35400;
+        }
+
+        .jumlah {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 12px;
+        }
+
+        .jumlah button {
+            border: none;
+            background: #8b4513;
+            color: white;
+            width: 38px;
+            height: 38px;
+            border-radius: 50%;
+            font-size: 22px;
+            cursor: pointer;
+        }
+
+        .jumlah button:hover {
+            background: #d2691e;
+        }
+
+        .jumlah span {
+            font-size: 20px;
+            font-weight: bold;
+            min-width: 25px;
+            text-align: center;
+        }
+
+        .pesanan {
+            margin-top: 35px;
+            background: white;
+            border-radius: 18px;
+            padding: 25px;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.12);
+        }
+
+        .pesanan h2 {
+            color: #8b4513;
+            margin-bottom: 15px;
+        }
+
+        #daftarPesanan {
+            margin-bottom: 15px;
+            line-height: 1.8;
+        }
+
+        .total {
+            border-top: 2px solid #eee;
+            padding-top: 15px;
+            font-size: 22px;
+            font-weight: bold;
+            color: #d35400;
+        }
+
+        .wa-button {
+            display: block;
+            width: 100%;
+            margin-top: 20px;
+            padding: 16px;
+            background: #25D366;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 12px;
+            font-size: 18px;
+            font-weight: bold;
+            border: none;
+            cursor: pointer;
+        }
+
+        .wa-button:hover {
+            background: #1ebe5d;
+        }
+
+        footer {
+            margin-top: 40px;
+            background: #3d2415;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+
+        @media (max-width: 600px) {
+            header h1 {
+                font-size: 30px;
+            }
+
+            .menu img {
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+<header>
+    <h1>🍽️ Iwak Gatul</h1>
+    <p>Jajanan lezat, harga bersahabat!</p>
+</header>
+
+<div class="container">
+
+    <div class="judul">
+        <h2>Menu Kami</h2>
+        <p>Pilih makanan dan minuman favoritmu</p>
+    </div>
+
+    <div class="menu-container">
+
+        <!-- IWAK GATUL -->
+        <div class="menu">
+            <img src="https://images.unsplash.com/photo-1547592180-85f173990554?auto=format&fit=crop&w=800&q=80"
+                 alt="Iwak Gatul">
+            <div class="menu-content">
+                <h3>🐟 Iwak Gatul</h3>
+                <p class="deskripsi">
+                    Ikan gurih dengan cita rasa khas yang menggugah selera.
+                </p>
+                <p class="harga">Rp10.000</p>
+
+                <div class="jumlah">
+                    <button onclick="ubahJumlah(0, -1)">−</button>
+                    <span id="jumlah0">0</span>
+                    <button onclick="ubahJumlah(0, 1)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- KLEPON -->
+        <div class="menu">
+            <img src="https://images.unsplash.com/photo-1601050690597-df0568f70950?auto=format&fit=crop&w=800&q=80"
+                 alt="Klepon">
+            <div class="menu-content">
+                <h3>🍡 Klepon</h3>
+                <p class="deskripsi">
+                    Klepon lembut dengan gula merah manis dan kelapa.
+                </p>
+                <p class="harga">Rp5.000</p>
+
+                <div class="jumlah">
+                    <button onclick="ubahJumlah(1, -1)">−</button>
+                    <span id="jumlah1">0</span>
+                    <button onclick="ubahJumlah(1, 1)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ES JERUK -->
+        <div class="menu">
+            <img src="https://images.unsplash.com/photo-1557800636-894a64c1696f?auto=format&fit=crop&w=800&q=80"
+                 alt="Es Jeruk">
+            <div class="menu-content">
+                <h3>🍊 Es Jeruk</h3>
+                <p class="deskripsi">
+                    Minuman jeruk segar dan dingin, cocok diminum kapan saja.
+                </p>
+                <p class="harga">Rp5.000</p>
+
+                <div class="jumlah">
+                    <button onclick="ubahJumlah(2, -1)">−</button>
+                    <span id="jumlah2">0</span>
+                    <button onclick="ubahJumlah(2, 1)">+</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- ES TEH -->
+        <div class="menu">
+            <img src="https://images.unsplash.com/photo-1556679343-c7306c1976bc?auto=format&fit=crop&w=800&q=80"
+                 alt="Es Teh">
+            <div class="menu-content">
+                <h3>🧋 Es Teh</h3>
+                <p class="deskripsi">
+                    Es teh manis segar untuk menemani makanan favoritmu.
+                </p>
+                <p class="harga">Rp4.000</p>
+
+                <div class="jumlah">
+                    <button onclick="ubahJumlah(3, -1)">−</button>
+                    <span id="jumlah3">0</span>
+                    <button onclick="ubahJumlah(3, 1)">+</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- PESANAN -->
+    <div class="pesanan">
+        <h2>🛒 Pesanan Kamu</h2>
+
+        <div id="daftarPesanan">
+            Belum ada menu yang dipilih.
+        </div>
+
+        <div class="total">
+            Total: <span id="total">Rp0</span>
+        </div>
+
+        <button class="wa-button" onclick="pesanWhatsApp()">
+            📱 Pesan Sekarang via WhatsApp
+        </button>
+    </div>
+
+</div>
+
+<footer>
+    <p>© 2026 Iwak Gatul | Lezat • Segar • Bersahabat</p>
+</footer>
+
+<script>
+
+    const menu = [
+        {
+            nama: "Iwak Gatul",
+            harga: 10000,
+            jumlah: 0
+        },
+        {
+            nama: "Klepon",
+            harga: 5000,
+            jumlah: 0
+        },
+        {
+            nama: "Es Jeruk",
+            harga: 5000,
+            jumlah: 0
+        },
+        {
+            nama: "Es Teh",
+            harga: 4000,
+            jumlah: 0
+        }
+    ];
+
+    function ubahJumlah(index, perubahan) {
+
+        menu[index].jumlah += perubahan;
+
+        if (menu[index].jumlah < 0) {
+            menu[index].jumlah = 0;
+        }
+
+        document.getElementById("jumlah" + index).innerText =
+            menu[index].jumlah;
+
+        tampilkanPesanan();
+    }
+
+    function formatRupiah(angka) {
+        return "Rp" + angka.toLocaleString("id-ID");
+    }
+
+    function tampilkanPesanan() {
+
+        let daftar = "";
+        let total = 0;
+        let adaPesanan = false;
+
+        menu.forEach((item) => {
+
+            if (item.jumlah > 0) {
+
+                adaPesanan = true;
+
+                let subtotal = item.harga * item.jumlah;
+                total += subtotal;
+
+                daftar += `
+                    <div>
+                        <b>${item.nama}</b>
+                        × ${item.jumlah}
+                        = ${formatRupiah(subtotal)}
+                    </div>
+                `;
+            }
+
+        });
+
+        if (!adaPesanan) {
+            daftar = "Belum ada menu yang dipilih.";
+        }
+
+        document.getElementById("daftarPesanan").innerHTML = daftar;
+        document.getElementById("total").innerText = formatRupiah(total);
+    }
+
+    function pesanWhatsApp() {
+
+        let pesan = "Halo Iwak Gatul! Saya ingin memesan:%0A%0A";
+        let total = 0;
+        let adaPesanan = false;
+
+        menu.forEach((item) => {
+
+            if (item.jumlah > 0) {
+
+                adaPesanan = true;
+
+                let subtotal = item.harga * item.jumlah;
+                total += subtotal;
+
+                pesan +=
+                    "• " + item.nama +
+                    " x" + item.jumlah +
+                    " = " + formatRupiah(subtotal) +
+                    "%0A";
+            }
+
+        });
+
+        if (!adaPesanan) {
+            alert("Silakan pilih minimal satu menu terlebih dahulu!");
+            return;
+        }
+
+        pesan +=
+            "%0ATotal: " + formatRupiah(total) +
+            "%0A%0ATerima kasih!";
+
+        const nomor = "6283182890543";
+
+        window.open(
+            "https://wa.me/" + nomor + "?text=" + pesan,
+            "_blank"
+        );
+    }
+
+</script>
+
+</body>
+</html>
+```
